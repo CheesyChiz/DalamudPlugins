@@ -1,0 +1,50 @@
+[
+  {
+    "Author": "CheesyChiz",
+    "Name": "Stock Manager",
+    "Punchline": "Balances Island Sanctuary stock with imported Visland routes.",
+    "Description": "Choose Island resources and stock levels, then let Stock Manager select imported Visland routes. Supports route editing and supervised generation, sortable resources, farming priorities with scheduled reviews, flight, underwater and guided cave navigation, an Island route map, mount override, stuck recovery, Lifestream, surplus export, run statistics, and /sm commands.",
+    "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/StockManager/main/assets/icon.png",
+    "Changelog": "Added a guided flight out of the initial cave before starting an outdoor route. If the corridor cannot be traversed, Stock Manager now falls back to Isle Return instead of repeatedly navigating into the cave wall.",
+    "InternalName": "StockManager",
+    "AssemblyVersion": "1.7.4.0",
+    "TestingAssemblyVersion": null,
+    "RepoUrl": "https://github.com/CheesyChiz/StockManager",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "Tags": [
+      "Island Sanctuary",
+      "Visland",
+      "Automation"
+    ],
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkInstall": "https://github.com/CheesyChiz/StockManager/releases/download/v1.7.4/StockManager.zip",
+    "DownloadLinkUpdate": "https://github.com/CheesyChiz/StockManager/releases/download/v1.7.4/StockManager.zip",
+    "DownloadLinkTesting": null,
+    "LastUpdate": 1785323283
+  },
+  {
+    "Author": "CheesyChiz",
+    "Name": "Positional Cue",
+    "InternalName": "PositionalCue",
+    "AssemblyVersion": "0.1.1.0",
+    "Description": "Test release: upcoming rear/flank HUD and a gentle sound cue. Requires Wrath Combo with positional IPC (found in 1.0.4.25). No movement or rotation control. Open /pcue for settings and preview. Built and logic-tested; in-game validation pending.",
+    "Punchline": "Wrath positional hints with a quiet sound cue. Test version.",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "RepoUrl": "https://github.com/CheesyChiz/PositionalCue",
+    "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/PositionalCue/main/assets/icon.png",
+    "Changelog": "Added plugin icon, shared CheesyChiz catalog, /positionalcue alias and on/off/sound/help commands. In-game validation pending.",
+    "Tags": [
+      "positional",
+      "wrath",
+      "melee",
+      "overlay"
+    ],
+    "DownloadLinkInstall": "https://github.com/CheesyChiz/PositionalCue/releases/download/v0.1.1/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/CheesyChiz/PositionalCue/releases/download/v0.1.1/latest.zip",
+    "DownloadLinkTesting": "https://github.com/CheesyChiz/PositionalCue/releases/download/v0.1.1/latest.zip",
+    "LastUpdate": 1789547950
+  }
+]
