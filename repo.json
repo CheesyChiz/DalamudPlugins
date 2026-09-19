@@ -42,9 +42,9 @@
       "melee",
       "overlay"
     ],
-    "DownloadLinkInstall": "https://github.com/CheesyChiz/PositionalCue/releases/download/v0.1.1/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/CheesyChiz/PositionalCue/releases/download/v0.1.1/latest.zip",
-    "DownloadLinkTesting": "https://github.com/CheesyChiz/PositionalCue/releases/download/v0.1.1/latest.zip",
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/PositionalCue/0.1.1.0.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/PositionalCue/0.1.1.0.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/PositionalCue/0.1.1.0.zip",
     "LastUpdate": 1789547950
   }
 ]
