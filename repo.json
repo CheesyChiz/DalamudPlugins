@@ -51,23 +51,23 @@
     "Author": "CheesyChiz",
     "Name": "Emote Shelf",
     "InternalName": "EmoteShelf",
-    "AssemblyVersion": "0.1.1.0",
+    "AssemblyVersion": "0.2.0.0",
     "Description": "Find installed Penumbra emote replacements, bookmark mod-emote pairs and option variants on a movable panel, and temporarily prioritize the selected mod before playing its emote. Settings: /eshelf. Requires Penumbra.",
     "Punchline": "One-click bookmarks for Penumbra emote mods.",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/CheesyChiz/EmoteShelf",
     "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/EmoteShelf/main/assets/icon.png",
-    "Changelog": "Fixed startup by packaging Penumbra API dependencies; resized the catalog icon to Dalamud's 512x512 limit. Live game validation pending.",
+    "Changelog": "Redesigned resizable bilingual UI with an emote-first browser and icon-grid panel; automatic game-data emote matching, lockable overlay, collection-wide priority selection and redraw when switching the same looping emote. Live game validation pending.",
     "Tags": [
       "emote",
       "dance",
       "penumbra",
       "overlay"
     ],
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.1.1.0.zip",
-    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.1.1.0.zip",
-    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.1.1.0.zip",
-    "LastUpdate": 1791499069
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.2.0.0.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.2.0.0.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.2.0.0.zip",
+    "LastUpdate": 1791500694
   }
 ]
