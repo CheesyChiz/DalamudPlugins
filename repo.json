@@ -57,6 +57,7 @@
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/CheesyChiz/EmoteShelf",
+    "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/EmoteShelf/main/assets/icon.png",
     "Changelog": "Initial preview. Automatic emote-mod scanning, bookmarks, saved Penumbra options and a movable overlay. Live game validation pending.",
     "Tags": [
       "emote",
