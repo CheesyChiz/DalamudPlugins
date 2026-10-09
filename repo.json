@@ -51,23 +51,23 @@
     "Author": "CheesyChiz",
     "Name": "Emote Shelf",
     "InternalName": "EmoteShelf",
-    "AssemblyVersion": "0.3.1.0",
+    "AssemblyVersion": "0.3.2.0",
     "Description": "Browse Penumbra emote mods, choose variants, and pin favorites to an icon panel. Supports ground-sit and standing-idle pose slots. Experimental pair launch and optional nearby alignment require Lightless Sync with your partner. Open with /es or /eshelf. Solo playback requires only Penumbra.",
     "Punchline": "One-click bookmarks for Penumbra emote mods.",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/CheesyChiz/EmoteShelf",
     "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/EmoteShelf/main/assets/icon.png",
-    "Changelog": "Opt-in experimental pair launch: mutually target a nearby partner and click Pair or Shift+panel icon. Requires loaded Lightless Sync handling the partner; its API cannot confirm that a new animation finished downloading. Both clients prepare local roles before the HTTPS relay schedules a common command start. Optional mutual-consent approach/facing alignment, with no teleporting. Cancellation on movement, target loss or stale connection. No rooms or mod transfers. Shared start is not frame-accurate sit/idle synchronization. Build, regression, server HTTP and repeated live relay tests passed; two-player in-game playback/alignment still need validation. Intermittent music loss is not fixed.",
+    "Changelog": "Context-menu partner invitations with a movable Accept/Decline notification. Preview and reset its saved position in Settings. One active partner; explicit consent, invitation expiry and disconnect, without keeping each other targeted. Both players still choose their own role and click Pair or Shift+icon for every launch. Requires 0.3.2.0 and Lightless on both sides. Enabling pair mode connects the invitation inbox to the relay; game identity is not authenticated, so accept only expected invitations from trusted partners. Build, 18 server tests and live HTTPS invitation/start tests passed; in-game UI and two-player playback still need validation. Music and exact sit/idle phase limitations remain.",
     "Tags": [
       "emote",
       "dance",
       "penumbra",
       "overlay"
     ],
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.1.0.zip",
-    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.1.0.zip",
-    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.1.0.zip",
-    "LastUpdate": 1791550124
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.2.0.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.2.0.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.2.0.zip",
+    "LastUpdate": 1791554200
   }
 ]
