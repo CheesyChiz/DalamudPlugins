@@ -51,23 +51,23 @@
     "Author": "CheesyChiz",
     "Name": "Emote Shelf",
     "InternalName": "EmoteShelf",
-    "AssemblyVersion": "0.3.4.1",
+    "AssemblyVersion": "0.3.4.2",
     "Description": "Browse Penumbra emote mods, choose variants, and pin favorites to an icon panel. Supports ground-sit and standing-idle pose slots. Experimental pair launch and optional nearby alignment require Lightless Sync with your partner. Open with /es or /eshelf. Solo playback requires only Penumbra.",
     "Punchline": "One-click bookmarks for Penumbra emote mods.",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/CheesyChiz/EmoteShelf",
     "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/EmoteShelf/main/assets/icon.png",
-    "Changelog": "Replaced persistent Pair launch windows with a compact colored status HUD. Idle connected status is borderless and click-through; invitations and launch controls remain interactive. Disconnect hides the HUD; errors and Reconnect remain in Settings. Use notification preview to reposition it. Result messages expire. Alignment cancellation is still under investigation.",
+    "Changelog": "Added bounded pair-alignment diagnostics to the Dalamud log: relative position and angle error before/after correction, frame timings, character mode, input cancellation and pair readiness. A short attempt ID correlates both clients. No alignment thresholds or playback behavior changed; this release diagnoses the cancellation rather than claiming to fix it.",
     "Tags": [
       "emote",
       "dance",
       "penumbra",
       "overlay"
     ],
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.4.1.zip",
-    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.4.1.zip",
-    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.4.1.zip",
-    "LastUpdate": 1791566400
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.4.2.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.4.2.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.4.2.zip",
+    "LastUpdate": 1791568800
   }
 ]
