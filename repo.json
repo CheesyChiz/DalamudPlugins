@@ -51,23 +51,23 @@
     "Author": "CheesyChiz",
     "Name": "Emote Shelf",
     "InternalName": "EmoteShelf",
-    "AssemblyVersion": "0.2.8.1",
+    "AssemblyVersion": "0.2.9.0",
     "Description": "Browse Penumbra emote mods in local folders, preview variants, and pin favorites to an icon panel. Supports ground-sit and standing-idle pose slots, with temporary mod priority and effective-file verification. Open with /es or /eshelf. Requires Penumbra.",
     "Punchline": "One-click bookmarks for Penumbra emote mods.",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/CheesyChiz/EmoteShelf",
     "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/EmoteShelf/main/assets/icon.png",
-    "Changelog": "Fixes default animation files coexisting with mod options, without losing the pose-slot and exact variant checks added in 0.2.8.0. In-game validation pending.",
+    "Changelog": "Fixes false rejection of same-mod lip-sync/option overrides. Adds experimental single-command pose selection, actual pose-context checks, current/target slots and a manual Change pose fallback. Live-game validation pending; music during transitions between looping emotes remains under investigation.",
     "Tags": [
       "emote",
       "dance",
       "penumbra",
       "overlay"
     ],
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.2.8.1.zip",
-    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.2.8.1.zip",
-    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.2.8.1.zip",
-    "LastUpdate": 1791516278
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.2.9.0.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.2.9.0.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.2.9.0.zip",
+    "LastUpdate": 1791532209
   }
 ]
