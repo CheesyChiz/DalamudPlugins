@@ -51,23 +51,23 @@
     "Author": "CheesyChiz",
     "Name": "Emote Shelf",
     "InternalName": "EmoteShelf",
-    "AssemblyVersion": "0.3.3.1",
+    "AssemblyVersion": "0.3.4.0",
     "Description": "Browse Penumbra emote mods, choose variants, and pin favorites to an icon panel. Supports ground-sit and standing-idle pose slots. Experimental pair launch and optional nearby alignment require Lightless Sync with your partner. Open with /es or /eshelf. Solo playback requires only Penumbra.",
     "Punchline": "One-click bookmarks for Penumbra emote mods.",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/CheesyChiz/EmoteShelf",
     "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/EmoteShelf/main/assets/icon.png",
-    "Changelog": "Pair playback now explicitly supplies no emote target through the native EmoteManager, without clearing your target or changing global auto-face settings. Unlock and execution checks remain enforced. Alignment captures the anchor heading before approach and reapplies it before launch; anchor turning cancels stale alignment. Partner lookup uses the established link, not mutual targeting. Solo playback is unchanged. Build and regression tests passed; two-player in-game heading behavior still requires validation. Update both clients. Music and exact sit/idle phase limitations remain.",
+    "Changelog": "Alignment is now mandatory for every pair launch; the optional checkbox is removed. The follower walks to the anchor, then performs bounded fine position/facing correction, requiring three stable frames. Both clients verify matching transforms after redraw before readiness, and again before playback. Failed alignment cancels instead of launching separately. Accepting a proposal authorizes the approach and fine correction. No body height or scale changes. Update both clients to 0.3.4.0. Build and regression tests passed; two-client in-game alignment still requires validation.",
     "Tags": [
       "emote",
       "dance",
       "penumbra",
       "overlay"
     ],
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.3.1.zip",
-    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.3.1.zip",
-    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.3.1.zip",
-    "LastUpdate": 1791562455
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.4.0.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.4.0.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.4.0.zip",
+    "LastUpdate": 1791564308
   }
 ]
