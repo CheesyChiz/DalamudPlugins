@@ -51,24 +51,24 @@
     "Author": "CheesyChiz",
     "Name": "Emote Shelf",
     "InternalName": "EmoteShelf",
-    "AssemblyVersion": "0.3.6.0",
-    "TestingAssemblyVersion": "0.3.9.0",
+    "AssemblyVersion": "0.3.9.0",
+    "TestingAssemblyVersion": null,
     "Description": "Browse Penumbra emote mods, choose variants, and pin favorites to an icon panel. Supports ground-sit and standing-idle poses. Experimental pair launch includes required alignment and needs Lightless Sync with your partner. Technical error reports are mandatory after accepting the first-use notice; collection cannot be disabled while using the plugin. Open with /es or /eshelf. Solo playback requires only Penumbra.",
     "Punchline": "One-click bookmarks for Penumbra emote mods.",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/CheesyChiz/EmoteShelf",
     "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/EmoteShelf/main/assets/icon.png",
-    "Changelog": "Testing 0.3.9.0: dependency installation shortcuts and verified project/repository links; own two-client phase telemetry with bounded agreed restarts; reciprocal resource checksum verification; direct partner-role editing without bookmarks; dedicated Partner tab and responsive session sidebar. New resource/timing exchange is disclosed on first use. Both clients require 0.3.9.0. 41 relay tests and client checks passed; live-game validation pending. Exact music seeking and blended-track correction are not implemented. Matching AGPL source included.",
+    "Changelog": "0.3.9.0: dependency installation shortcuts and verified project/repository links; own two-client phase telemetry with bounded agreed restarts; reciprocal resource checksum verification; direct partner-role editing without bookmarks; dedicated Partner tab and responsive session sidebar. New resource/timing exchange is disclosed on first use. Both clients require 0.3.9.0. 41 relay tests and client checks passed; live-game validation pending. Exact music seeking and blended-track correction are not implemented. Matching AGPL source included.",
     "Tags": [
       "emote",
       "dance",
       "penumbra",
       "overlay"
     ],
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.6.0.zip",
-    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.6.0.zip",
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.0.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.0.zip",
     "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.0.zip",
-    "LastUpdate": 1791724291
+    "LastUpdate": 1791728273
   }
 ]
