@@ -51,7 +51,7 @@
     "Author": "CheesyChiz",
     "Name": "Emote Shelf",
     "InternalName": "EmoteShelf",
-    "AssemblyVersion": "0.3.9.0",
+    "AssemblyVersion": "0.3.9.1",
     "TestingAssemblyVersion": null,
     "Description": "Browse Penumbra emote mods, choose variants, and pin favorites to an icon panel. Supports ground-sit and standing-idle poses. Experimental pair launch includes required alignment and needs Lightless Sync with your partner. Technical error reports are mandatory after accepting the first-use notice; collection cannot be disabled while using the plugin. Open with /es or /eshelf. Solo playback requires only Penumbra.",
     "Punchline": "One-click bookmarks for Penumbra emote mods.",
@@ -59,16 +59,16 @@
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/CheesyChiz/EmoteShelf",
     "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/EmoteShelf/main/assets/icon.png",
-    "Changelog": "0.3.9.0: dependency installation shortcuts and verified project/repository links; own two-client phase telemetry with bounded agreed restarts; reciprocal resource checksum verification; direct partner-role editing without bookmarks; dedicated Partner tab and responsive session sidebar. New resource/timing exchange is disclosed on first use. Both clients require 0.3.9.0. 41 relay tests and client checks passed; live-game validation pending. Exact music seeking and blended-track correction are not implemented. Matching AGPL source included.",
+    "Changelog": "0.3.9.1: shared dance mode with the same emote, one acceptance and 3-yalm spacing; paired roles retain same-position alignment. Sound replay now waits for a neutral character state before resource refresh and launch (in-game verification still required). Consistent action buttons, compact panel controls, visible inspection results and Content under Additional emotes. Both partners must update and reconnect. Selected dance option names are disclosed in the updated first-use notice. 43 relay tests and client checks passed. Matching AGPL source included.",
     "Tags": [
       "emote",
       "dance",
       "penumbra",
       "overlay"
     ],
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.0.zip",
-    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.0.zip",
-    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.0.zip",
-    "LastUpdate": 1791728273
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.1.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.1.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.1.zip",
+    "LastUpdate": 1791730448
   }
 ]
