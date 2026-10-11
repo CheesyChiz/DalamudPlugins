@@ -51,7 +51,7 @@
     "Author": "CheesyChiz",
     "Name": "Emote Shelf",
     "InternalName": "EmoteShelf",
-    "AssemblyVersion": "0.3.9.10",
+    "AssemblyVersion": "0.3.9.11",
     "TestingAssemblyVersion": null,
     "Description": "Browse Penumbra emote mods, choose variants, and pin favorites to an icon panel. Supports ground-sit and standing-idle poses. Experimental pair launch includes required alignment and needs Lightless Sync with your partner. Technical error reports are mandatory after accepting the first-use notice; collection cannot be disabled while using the plugin. Open with /es or /eshelf. Solo playback requires only Penumbra.",
     "Punchline": "One-click bookmarks for Penumbra emote mods.",
@@ -59,16 +59,16 @@
     "DalamudApiLevel": 15,
     "RepoUrl": "https://github.com/CheesyChiz/EmoteShelf",
     "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/EmoteShelf/main/assets/icon.png",
-    "Changelog": "0.3.9.10: transfer progress with percentage and byte counts, separate upload/download/validation/install stages and clearly labelled expiry. Remove stale offer-sent text after acceptance. Upload chunks immediately after acknowledgement without extra polls; remove download chunk delays. Cancellation is checked between chunks. Relay bulk requests have a separate bounded budget. Synthetic 21 MiB client transfer, retry/integrity and 45 relay tests passed. Matching AGPL source included.",
+    "Changelog": "0.3.9.11: preserve original received mod names without a prefix. Query persistent collections only after Penumbra registration has yielded a frame. Import failures remain visible instead of showing endless installation; retain isolated files rather than deleting during Penumbra compression. Record original import stage/type and method stack locally; report bounded stage/failure categories to developers. Automated client and 46 server tests passed; recipient installation requires in-game verification. Matching AGPL source included.",
     "Tags": [
       "emote",
       "dance",
       "penumbra",
       "overlay"
     ],
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.10.zip",
-    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.10.zip",
-    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.10.zip",
-    "LastUpdate": 1791747290
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.11.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.11.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.11.zip",
+    "LastUpdate": 1791748673
   }
 ]
