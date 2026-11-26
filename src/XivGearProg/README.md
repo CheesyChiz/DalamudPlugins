@@ -34,3 +34,5 @@ AGPL-3.0-only. `XivGearSet.cs` is from [XivGearExport](https://github.com/Violet
 Version 0.1.0.4: uploads character name and home world for the account profile; keeps the saved token masked and reports changed sets, inventory updates, or no changes. Automatic checks run every 5 minutes. Use Sync now for an immediate upload.
 
 Version 0.1.0.5 adds currencies, gear exchange costs, retainer inventory snapshots and per-job/per-set sync filters. Automatic checks remain every 5 minutes.
+
+Version 0.1.0.6 fixes tomestone prices and supplies currency icons. The website links exchange ingredients to Garland Tools and shows the base item price alongside augmentation requirements.

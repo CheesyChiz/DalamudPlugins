@@ -75,7 +75,7 @@
     "Author": "CheesyChiz",
     "Name": "XIVGear Prog",
     "InternalName": "XivGearProg",
-    "AssemblyVersion": "0.1.0.5",
+    "AssemblyVersion": "0.1.0.6",
     "Description": "Connect your account using a revocable token. Sends your equipped gear and saved combat gear sets, including materia and relic stats, to xivgearprog.top. Includes gear in bags and Armoury Chest. Includes currencies and gear exchange materials. Retainer inventory snapshots update only after opening their inventories in game. Choose which jobs and individual gear sets to sync in /xgp. Open /xgp to connect; automatic checks run every 5 minutes and only changed data is sent. Use Sync now for an immediate update.",
     "ApplicableVersion": "any",
     "RepoUrl": "https://github.com/CheesyChiz/DalamudPlugins/tree/main/src/XivGearProg",
@@ -92,11 +92,11 @@
     "LoadPriority": 0,
     "Punchline": "Sync equipped gear and saved gear sets with XIVGear Prog.",
     "AcceptsFeedback": true,
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.5.zip",
-    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.5.zip",
-    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.5.zip",
-    "LastUpdate": 1795667614,
-    "Changelog": "Currencies and gear exchange costs; cached retainer inventory with timestamps (open each retainer inventory to refresh). Choose jobs and individual sets to sync. Shared game-set identity avoids duplicate Allagan Tools imports. Auto sync every 5 minutes; Sync now sends immediately.",
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.6.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.6.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.6.zip",
+    "LastUpdate": 1795668572,
+    "Changelog": "Fix missing tomestone exchange prices caused by low currency item IDs. Send currency icons. Website now links required items and shows the base gear tomestone price separately from augmentation materials.",
     "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/src/XivGearProg/assets/icon.png"
   }
 ]

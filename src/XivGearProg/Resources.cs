@@ -38,8 +38,8 @@ public sealed partial class Plugin {
     var costs=new JArray();bool valid=true;
     foreach(var cost in offer.ItemCosts){if(cost.ItemCost.RowId==0||cost.CurrencyCost==0)continue;uint id=cost.ItemCost.RowId;
      if(shop.UseCurrencyType==2&&id<10)id=tomeItems.GetValueOrDefault(id);
-     if(id<100||cost.CollectabilityCost>0||!items.TryGetRow(id,out var item)){valid=false;break;}
-     costs.Add(new JObject{["id"]=id,["name"]=item.Name.ToString(),["count"]=cost.CurrencyCost,["hq"]=cost.CostType==1});
+     if((id<100&&!tomeItems.ContainsValue(id))||cost.CollectabilityCost>0||!items.TryGetRow(id,out var item)){valid=false;break;}
+     costs.Add(new JObject{["id"]=id,["name"]=item.Name.ToString(),["iconId"]=item.Icon,["count"]=cost.CurrencyCost,["hq"]=cost.CostType==1});
     }
     if(!valid||costs.Count==0)continue;
     var signature=rewards[0].Item.RowId+":"+costs.ToString(Newtonsoft.Json.Formatting.None);if(!exchangeKeys.Add(signature))continue;
