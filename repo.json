@@ -75,7 +75,7 @@
     "Author": "CheesyChiz",
     "Name": "XIVGear Prog",
     "InternalName": "XivGearProg",
-    "AssemblyVersion": "0.1.0.1",
+    "AssemblyVersion": "0.1.0.2",
     "Description": "Connect your account using a revocable token. Sends your equipped gear and saved combat gear sets, including materia and relic stats, to xivgearprog.top. Includes gear in bags and Armoury Chest. Retainers are excluded. Open /xgp to connect; automatic checks run every 5 minutes and only changed data is sent. Use Sync now for an immediate update.",
     "ApplicableVersion": "any",
     "RepoUrl": "https://github.com/CheesyChiz/DalamudPlugins/tree/main/src/XivGearProg",
@@ -92,10 +92,11 @@
     "LoadPriority": 0,
     "Punchline": "Sync equipped gear and saved gear sets with XIVGear Prog.",
     "AcceptsFeedback": true,
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.1.zip",
-    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.1.zip",
-    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.1.zip",
-    "LastUpdate": 1795665890,
-    "Changelog": "0.1.0.1: automatic checks and failed-upload retries now run every 5 minutes. Unchanged data is not sent. Sync now remains available for immediate updates."
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.2.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.2.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.2.zip",
+    "LastUpdate": 1795666027,
+    "Changelog": "0.1.0.2: add the XIVGear Prog site logo as the plugin icon. Automatic sync remains every 5 minutes; Sync now sends immediately.",
+    "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/src/XivGearProg/assets/icon.png"
   }
 ]
