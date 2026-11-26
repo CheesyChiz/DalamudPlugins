@@ -13,22 +13,35 @@ public sealed partial class Plugin {
  DateTime nextPlanCheck=DateTime.MinValue;
  ulong planCharacter;
  bool onlyMissing;
+ string planSearch="";
  readonly ConcurrentDictionary<uint,string> priceText=new();
  readonly SemaphoreSlim priceGate=new(2);
  void Draw(){
   if(!open)return;
-  ImGui.SetNextWindowSize(new Vector2(780,620),ImGuiCond.FirstUseEver);
-  ImGui.PushStyleColor(ImGuiCol.WindowBg,new Vector4(.055f,.08f,.12f,1));ImGui.PushStyleColor(ImGuiCol.Header,new Vector4(.12f,.25f,.28f,1));ImGui.PushStyleColor(ImGuiCol.Button,new Vector4(.13f,.24f,.29f,1));ImGui.PushStyleColor(ImGuiCol.ButtonHovered,new Vector4(.18f,.38f,.40f,1));ImGui.PushStyleColor(ImGuiCol.FrameBg,new Vector4(.08f,.12f,.18f,1));ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding,6);ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding,new Vector2(18,16));
+  ImGui.SetNextWindowSize(new Vector2(980,700),ImGuiCond.FirstUseEver);
+  ImGui.SetNextWindowSizeConstraints(new Vector2(680,440),new Vector2(1800,1400));
+  var colors=new (ImGuiCol,Vector4)[]{
+   (ImGuiCol.WindowBg,new(.04f,.06f,.09f,1)),(ImGuiCol.ChildBg,new(.065f,.09f,.13f,1)),
+   (ImGuiCol.Border,new(.18f,.24f,.29f,1)),(ImGuiCol.Text,new(.88f,.93f,.98f,1)),(ImGuiCol.TextDisabled,Muted),
+   (ImGuiCol.Header,new(.12f,.28f,.29f,1)),(ImGuiCol.HeaderHovered,new(.16f,.35f,.35f,1)),(ImGuiCol.HeaderActive,new(.18f,.40f,.39f,1)),
+   (ImGuiCol.Button,new(.12f,.25f,.29f,1)),(ImGuiCol.ButtonHovered,new(.17f,.36f,.38f,1)),(ImGuiCol.ButtonActive,new(.20f,.44f,.43f,1)),
+   (ImGuiCol.FrameBg,new(.08f,.12f,.17f,1)),(ImGuiCol.FrameBgHovered,new(.12f,.21f,.26f,1)),(ImGuiCol.FrameBgActive,new(.13f,.28f,.31f,1)),
+   (ImGuiCol.Tab,new(.08f,.12f,.17f,1)),(ImGuiCol.TabHovered,new(.16f,.35f,.35f,1)),(ImGuiCol.TabActive,new(.12f,.30f,.30f,1)),
+   (ImGuiCol.CheckMark,Accent),(ImGuiCol.Separator,new(.18f,.24f,.29f,1)),(ImGuiCol.ResizeGrip,new(.12f,.25f,.29f,1))};
+  foreach(var (color,value) in colors)ImGui.PushStyleColor(color,value);
+  ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding,5);ImGui.PushStyleVar(ImGuiStyleVar.ChildRounding,8);ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding,new Vector2(14,12));ImGui.PushStyleVar(ImGuiStyleVar.FramePadding,new Vector2(10,6));ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing,new Vector2(8,8));
   if(ImGui.Begin("XIVGear Prog",ref open)){
    ImGui.TextColored(Accent,"XIVGEAR PROG");ImGui.SameLine();ImGui.TextDisabled(Player.IsLoaded?Player.CharacterName+" @ "+Player.HomeWorld.Value.Name.ToString():"Log in to view your character's plans");
    ImGui.Separator();
+   ImGui.BeginChild("main-content",new Vector2(0,-36),false);
    if(ImGui.BeginTabBar("xgp-tabs")){
     if(ImGui.BeginTabItem("Gear plans")){DrawImport();ImGui.EndTabItem();}
     if(ImGui.BeginTabItem("Connection")){DrawConnection();ImGui.EndTabItem();}
     if(ImGui.BeginTabItem("Sync filters")){DrawSetFilters();ImGui.EndTabItem();}
     ImGui.EndTabBar();
    }
-  }ImGui.End();ImGui.PopStyleVar(2);ImGui.PopStyleColor(5);
+   ImGui.EndChild();ImGui.Separator();ImGui.TextColored(Muted,importMessage.Length>0?importMessage:status);
+  }ImGui.End();ImGui.PopStyleVar(5);ImGui.PopStyleColor(colors.Length);
  }
  static void OpenItem(uint id)=>Process.Start(new ProcessStartInfo("https://www.garlandtools.org/db/#item/"+id){UseShellExecute=true});
  List<string> Plans(){var owner=Player.ContentId.ToString();if(!config.ImportedPlans.TryGetValue(owner,out var plans)){plans=[];config.ImportedPlans[owner]=plans;}return plans;}
@@ -45,13 +58,26 @@ public sealed partial class Plugin {
   if(!Player.IsLoaded){ImGui.TextWrapped("Log in to a character. Plans are saved separately for each character.");return;}
   if(planCharacter!=Player.ContentId){planCharacter=Player.ContentId;importPreview=null;importMessage="";nextPlanCheck=DateTime.MinValue;}
   if(DateTime.UtcNow>=nextPlanCheck)RefreshPlanInventory();
-  ImGui.Spacing();ImGui.TextWrapped("Copy a build using To game on the website. Keep it here as a shopping checklist, or create a new game gear set.");
-  if(ImGui.Button("Paste plan")){try{var text=ImGui.GetClipboardText();if(text.Length>100000)throw new Exception("Set data is too large.");var doc=JObject.Parse(text);ValidateImport(doc);importPreview=doc;SavePlan();importMessage="Plan saved for this character.";}catch(Exception e){importPreview=null;importMessage=e.Message;}}
-  ImGui.SameLine();if(ImGui.Button("Refresh inventory"))RefreshPlanInventory();ImGui.SameLine();if(ImGui.Button("Open website / simulate"))Process.Start(new ProcessStartInfo("https://xivgearprog.top/"){UseShellExecute=true});
-  ImGui.TextDisabled("Simulations run on the website. Local inventory refreshes every 30 seconds while this tab is open.");
-  if(ImGui.BeginCombo("Saved plans",importPreview?["set"]?.Value<string>("name")??"Choose a plan")){
-   foreach(var saved in Plans().ToArray()){try{var doc=JObject.Parse(saved);var name=doc["set"]!.Value<string>("name")+" · "+doc.Value<string>("job");if(ImGui.Selectable(name)){ValidateImport(doc);importPreview=doc;importMessage="";}}catch{} }ImGui.EndCombo();
+  ImGui.Spacing();
+  if(ImGui.Button("Paste plan from website")){try{var text=ImGui.GetClipboardText();if(text.Length>100000)throw new Exception("Set data is too large.");var doc=JObject.Parse(text);ValidateImport(doc);importPreview=doc;SavePlan();importMessage="Plan saved for this character.";}catch(Exception e){importPreview=null;importMessage=e.Message;}}
+  if(ImGui.IsItemHovered())ImGui.SetTooltip("Website > My sets > To game. Then click here to read the copied build.");
+  ImGui.SameLine();if(ImGui.Button("Refresh inventory"))RefreshPlanInventory();ImGui.SameLine();if(ImGui.Button("Open website"))Process.Start(new ProcessStartInfo("https://xivgearprog.top/"){UseShellExecute=true});
+  ImGui.SetNextItemWidth(-1);ImGui.InputTextWithHint("##plan-search","Search saved sets, jobs or notes",ref planSearch,200);
+  var width=ImGui.GetContentRegionAvail().X;float left=Math.Clamp(width*.32f,190,310);
+  ImGui.BeginChild("plan-library",new Vector2(left,0),true);
+  ImGui.TextColored(Accent,"SAVED SETS");ImGui.SameLine();ImGui.TextDisabled(Plans().Count.ToString());ImGui.Separator();
+  int visible=0;
+  foreach(var saved in Plans().ToArray()){
+   try{var doc=JObject.Parse(saved);var set=doc["set"]!;string name=set.Value<string>("name")??"Build",job=doc.Value<string>("job")??"",notes=set.Value<string>("notes")??"";
+    if(!(name+" "+job+" "+notes).Contains(planSearch,StringComparison.OrdinalIgnoreCase))continue;
+    ImGui.PushID(visible++);bool selected=importPreview?["set"]?.Value<string>("name")==name&&importPreview?.Value<string>("job")==job;
+    if(ImGui.Selectable(name,selected)){ValidateImport(doc);importPreview=doc;importMessage="";}
+    ImGui.TextColored(Muted,job+" · Lv. "+(set.Value<int?>("calculationLevel")??set.Value<int?>("level")??100)+(set.Value<int?>("ilvlSync") is int sync?" · i"+sync+" sync":""));
+    if(notes.Length>0)ImGui.TextWrapped(notes);ImGui.Spacing();ImGui.PopID();
+   }catch{}
   }
+  if(visible==0)ImGui.TextWrapped(Plans().Count==0?"No saved sets yet. Copy one from the website using To game, then paste it above.":"No sets match your search.");
+  ImGui.EndChild();ImGui.SameLine();ImGui.BeginChild("plan-detail",new Vector2(0,0),true);
   if(importPreview is not null){
    ImGui.Separator();ImGui.TextColored(Accent,importPreview["set"]!.Value<string>("name")??"Build");
    if(importPreview["set"]!.Value<string>("notes") is string notes)ImGui.TextWrapped(notes);
@@ -78,7 +104,8 @@ public sealed partial class Plugin {
    ImGui.SameLine();if(ImGui.Button("Remove saved plan")){Plans().RemoveAll(s=>{var p=JObject.Parse(s);return p.Value<string>("job")==importPreview.Value<string>("job")&&p["set"]!.Value<string>("name")==importPreview["set"]!.Value<string>("name");});PI.SavePluginConfig(config);importPreview=null;}
    ImGui.TextWrapped("Creates a separate game-set slot, without equipping it. Missing gear is not obtained. Change materia and relic stats yourself in game.");
   }
-  if(importMessage.Length>0)ImGui.TextWrapped(importMessage);
+  else {ImGui.Spacing();ImGui.TextColored(Accent,"YOUR GEAR PLAN");ImGui.TextWrapped("Choose a saved set on the left to see owned gear, missing items and exchange costs.");ImGui.Separator();ImGui.TextWrapped("1. Website: My sets > To game\n2. Here: Paste plan from website\n3. Review the items and create a game set when ready");ImGui.TextColored(Muted,"DPS simulations are available on the website.");}
+  ImGui.EndChild();
  }
  async Task LoadPlanPrices(uint id){
   if(!priceText.TryAdd(id,"Loading server prices…"))return;
