@@ -5,12 +5,12 @@ using System.Net.Http.Headers;
 using System.Text;
 namespace XivGearProg;
 public sealed partial class Plugin {
- bool receivingPlans,plansPending;
+ bool receivingPlans,plansPending,planStreamReady;
  CancellationTokenSource? planEvents;
  string eventIdentity="";
  void UpdatePlanConnection(){
   var identity=Player.IsLoaded&&config.Token.Length>0?Player.ContentId+":"+config.Token:"";
-  if(identity==eventIdentity)return;eventIdentity=identity;planEvents?.Cancel();planEvents?.Dispose();planEvents=null;
+  if(identity==eventIdentity)return;eventIdentity=identity;planStreamReady=false;planEvents?.Cancel();planEvents?.Dispose();planEvents=null;
   if(identity.Length==0)return;
   planEvents=CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);_ = ListenForPlans(Player.ContentId.ToString(),config.Token,planEvents.Token);
  }
@@ -19,13 +19,14 @@ public sealed partial class Plugin {
    try{
     using var request=new HttpRequestMessage(HttpMethod.Get,"https://xivgearprog.top/api/plugin/events?characterId="+Uri.EscapeDataString(owner));
     request.Headers.Authorization=new AuthenticationHeaderValue("Bearer",token);
-    using var response=await http.SendAsync(request,HttpCompletionOption.ResponseHeadersRead,cancel);response.EnsureSuccessStatusCode();
+    using var response=await http.SendAsync(request,HttpCompletionOption.ResponseHeadersRead,cancel);response.EnsureSuccessStatusCode();planStreamReady=true;
     using var stream=await response.Content.ReadAsStreamAsync(cancel);using var reader=new System.IO.StreamReader(stream);
     while(await reader.ReadLineAsync(cancel) is string line){
      if(!line.StartsWith("data:"))continue;
      await Framework.RunOnFrameworkThread(()=>{if(!disposed&&!cancel.IsCancellationRequested&&config.Token==token&&Player.ContentId.ToString()==owner)FetchPlans();});
     }
    }catch(OperationCanceledException) when(cancel.IsCancellationRequested){return;}catch{}
+   if(eventIdentity==owner+":"+token)planStreamReady=false;
    try{await Task.Delay(TimeSpan.FromSeconds(10),cancel);}catch(OperationCanceledException){return;}
   }
  }
