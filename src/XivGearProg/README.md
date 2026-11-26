@@ -23,6 +23,6 @@ Game sets have stable character + game slot identifiers, shared with Allagan Too
 Tokens grant only gear-upload access, are stored in the local Dalamud plugin configuration, and are never logged. The server stores token hashes. Creating a replacement token revokes the old one.
 
 ## License
-[AGPL-3.0-only](LICENSE).
+[AGPL-3.0-only](LICENSE.md).
 
 `XivGearSet.cs` is from [XivGearExport](https://github.com/VioletStardustXIV/XivGearExport), licensed under AGPL-3.0.
