@@ -22,11 +22,7 @@ Game sets have stable character + game slot identifiers, shared with Allagan Too
 
 Tokens grant only gear-upload access, are stored in the local Dalamud plugin configuration, and are never logged. The server stores token hashes. Creating a replacement token revokes the old one.
 
-## License and attribution
-AGPL-3.0-only. `XivGearSet.cs` is from [XivGearExport](https://github.com/VioletStardustXIV/XivGearExport), commit `1a4a4ebf7f9d10911bf1b7975024fd4672ba5622`, licensed under AGPL-3.0. The upstream conversion preserves materia and Phantom/Manderville/Resistance relic stats. Tomestone's public plugin was reviewed for its token-based connection flow; no Tomestone source was incorporated.
+## License
+[AGPL-3.0-only](LICENSE).
 
-Version 0.1.0.4: uploads character name and home world for the account profile; keeps the saved token masked and reports changed sets, inventory updates, or no changes. Automatic checks run every 5 minutes. Use Sync now for an immediate upload.
-
-Version 0.1.0.5 adds currencies, gear exchange costs, retainer inventory snapshots and per-job/per-set sync filters. Automatic checks remain every 5 minutes.
-
-Version 0.1.0.6 fixes tomestone prices and supplies currency icons. The website links exchange ingredients to Garland Tools and shows the base item price alongside augmentation requirements.
+`XivGearSet.cs` is from [XivGearExport](https://github.com/VioletStardustXIV/XivGearExport), licensed under AGPL-3.0.
