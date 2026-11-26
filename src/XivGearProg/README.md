@@ -27,3 +27,5 @@ Compiled against Dalamud API 15. Server tests cover token authorization, CSRF, r
 
 ## License and attribution
 AGPL-3.0-only. `XivGearSet.cs` is from [XivGearExport](https://github.com/VioletStardustXIV/XivGearExport), commit `1a4a4ebf7f9d10911bf1b7975024fd4672ba5622`, licensed under AGPL-3.0. The upstream conversion preserves materia and Phantom/Manderville/Resistance relic stats. Tomestone's public plugin was reviewed for its token-based connection flow; no Tomestone source was incorporated.
+
+Version 0.1.0.4: uploads character name and home world for the account profile; keeps the saved token masked and reports changed sets, inventory updates, or no changes. Automatic checks run every 5 minutes. Use Sync now for an immediate upload.

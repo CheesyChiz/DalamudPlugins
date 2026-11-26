@@ -54,7 +54,7 @@ public sealed class Plugin : IDalamudPlugin {
    if(v.IsEmpty||v.ItemId==0)continue;var id=v.ItemId%1_000_000;if(!items.TryGetRow(id,out var row)||row.EquipSlotCategory.RowId==0||row.EquipSlotCategory.Value.SoulCrystal>0)continue;
    var key=id.ToString()+(row.CanBeHq&&!v.IsHq?":nq":"");owned[key]=Math.Min(99,(owned.Value<int?>(key)??0)+(int)v.Quantity);
   }
-  if(sets.Count==0)throw new InvalidOperationException();return new JObject{["version"]=1,["characterId"]=Player.ContentId.ToString(),["sets"]=sets,["owned"]=owned}.ToString(Formatting.None);
+  if(sets.Count==0)throw new InvalidOperationException();return new JObject{["version"]=1,["characterId"]=Player.ContentId.ToString(),["characterName"]=Player.CharacterName.ToString(),["homeWorld"]=Player.HomeWorld.Value.Name.ToString(),["sets"]=sets,["owned"]=owned}.ToString(Formatting.None);
  }
  public void Dispose(){disposed=true;Framework.Update-=Update;PI.UiBuilder.Draw-=Draw;PI.UiBuilder.OpenConfigUi-=Show;Commands.RemoveHandler("/xgp");lifetime.Cancel();http.Dispose();lifetime.Dispose();}
 }

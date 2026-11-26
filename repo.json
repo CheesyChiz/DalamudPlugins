@@ -75,7 +75,7 @@
     "Author": "CheesyChiz",
     "Name": "XIVGear Prog",
     "InternalName": "XivGearProg",
-    "AssemblyVersion": "0.1.0.3",
+    "AssemblyVersion": "0.1.0.4",
     "Description": "Connect your account using a revocable token. Sends your equipped gear and saved combat gear sets, including materia and relic stats, to xivgearprog.top. Includes gear in bags and Armoury Chest. Retainers are excluded. Open /xgp to connect; automatic checks run every 5 minutes and only changed data is sent. Use Sync now for an immediate update.",
     "ApplicableVersion": "any",
     "RepoUrl": "https://github.com/CheesyChiz/DalamudPlugins/tree/main/src/XivGearProg",
@@ -92,11 +92,11 @@
     "LoadPriority": 0,
     "Punchline": "Sync equipped gear and saved gear sets with XIVGear Prog.",
     "AcceptsFeedback": true,
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.3.zip",
-    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.3.zip",
-    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.3.zip",
-    "LastUpdate": 1795666239,
-    "Changelog": "0.1.0.3: keep the saved token visible under a password mask. Show updated set counts and inventory changes after sync, and explicitly report unchanged local checks. Website now displays last received sync status.",
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.4.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.4.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.4.zip",
+    "LastUpdate": 1795666808,
+    "Changelog": "Character name and home world on the website. Saved token stays masked in the plugin. Clear sync results and no-change status. Automatic checks every 5 minutes; manual Sync now available.",
     "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/src/XivGearProg/assets/icon.png"
   }
 ]
