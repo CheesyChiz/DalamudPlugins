@@ -1,0 +1,10 @@
+<Project Sdk="Dalamud.NET.Sdk/15.0.0">
+ <PropertyGroup>
+  <Version>0.1.0.0</Version><Author>CheesyChiz</Author><Name>XIVGear Prog</Name><InternalName>XivGearProg</InternalName>
+  <Punchline>Sync equipped gear and saved gear sets with XIVGear Prog.</Punchline>
+  <Description>Connect your account using a revocable token. Sends your equipped gear and saved combat gear sets, including materia and relic stats, to xivgearprog.top. Includes gear in bags and Armoury Chest. Retainers are excluded. Open /xgp to connect; changes sync automatically.</Description>
+  <RepoUrl>https://github.com/CheesyChiz/DalamudPlugins/tree/main/src/XivGearProg</RepoUrl>
+  <Tags>gear;gearsets;xivgear;sync</Tags><PackageLicenseExpression>AGPL-3.0-only</PackageLicenseExpression>
+  <Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings><AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+ </PropertyGroup>
+</Project>

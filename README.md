@@ -20,5 +20,6 @@ StockManager and PositionalCue catalog URLs; existing settings are retained.
 | [Stock Manager](https://github.com/CheesyChiz/StockManager) | Maintains Island Sanctuary stock targets using imported gathering routes. | Visland, vnavmesh | `/sm` |
 | [Positional Cue](https://github.com/CheesyChiz/PositionalCue) | Displays upcoming rear/flank attacks from Wrath Combo with timing and optional sound cues. | Wrath Combo | `/pcue` |
 | [Emote Shelf](https://github.com/CheesyChiz/EmoteShelf) | Saves Penumbra emote-mod bookmarks on a movable panel and plays them with temporary priority changes. | Penumbra | `/eshelf` |
+| [XIVGear Prog](src/XivGearProg) | Automatically syncs gear, materia, relic stats and saved gear sets with xivgearprog.top. | None; website account required | `/xgp` |
 
-Source code and releases are maintained in each plugin's repository.
+XIVGear Prog source is included in this repository; other plugin sources and releases are maintained in their respective repositories.

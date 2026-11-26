@@ -70,5 +70,32 @@
     "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.30.zip",
     "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/EmoteShelf/0.3.9.30.zip",
     "LastUpdate": 1792670529
+  },
+  {
+    "Author": "CheesyChiz",
+    "Name": "XIVGear Prog",
+    "InternalName": "XivGearProg",
+    "AssemblyVersion": "0.1.0.0",
+    "Description": "Connect your account using a revocable token. Sends your equipped gear and saved combat gear sets, including materia and relic stats, to xivgearprog.top. Includes gear in bags and Armoury Chest. Retainers are excluded. Open /xgp to connect; changes sync automatically.",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/CheesyChiz/DalamudPlugins/tree/main/src/XivGearProg",
+    "Tags": [
+      "gear",
+      "gearsets",
+      "xivgear",
+      "sync"
+    ],
+    "DalamudApiLevel": 15,
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "CanUnloadAsync": false,
+    "LoadPriority": 0,
+    "Punchline": "Sync equipped gear and saved gear sets with XIVGear Prog.",
+    "AcceptsFeedback": true,
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.0.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.0.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.0.zip",
+    "LastUpdate": 1795665683,
+    "Changelog": "Initial release: automatic gear, materia, relic stat and saved gear-set sync with XIVGear Prog using revocable account tokens. Includes inventory and Armoury Chest gear. Build and server integration tests passed; live in-game validation is pending."
   }
 ]
