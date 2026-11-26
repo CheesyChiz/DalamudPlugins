@@ -19,7 +19,7 @@ The plugin checks for changes every 5 minutes. Unchanged snapshots are not resen
 
 Game sets have stable character + game slot identifiers, shared with Allagan Tools imports to avoid duplicates. Existing targets, manually created sets and settings are preserved. Existing imported names are retained when a game set updates. Deleted game sets are retained on the website rather than destructively removed.
 
-Tokens grant only gear-upload access, are stored in the local Dalamud plugin configuration, and are never logged. The server stores token hashes. Creating a replacement token revokes the old one.
+Tokens grant gear-upload access and access to plans explicitly sent to the plugin, are stored in the local Dalamud plugin configuration, and are never logged. The server stores token hashes. Creating a replacement token revokes the old one.
 
 Prices and exchange requirements come from Garland Tools and are cached on the website server. Viewing prices does not require the game or plugin. The plugin supplies your inventory and currency balances.
 
@@ -33,11 +33,14 @@ To add another character, log in to that character and sync using the same token
 Job levels are synced for every unlocked combat job, including jobs excluded from gear-set uploads. The website uses the selected character’s job level for gear eligibility and calculation. Level gains are included in the next automatic check (every 5 minutes), or immediately with **Sync now**.
 
 ## Import a website build into the game
-In My sets on the website, use **To game**. In `/xgp`, open **Gear plans**, click **Paste plan**, then **Create NEW game set**. Switch to the build's job first. This creates a new slot without replacing existing sets or equipping it. Missing items are not obtained. Materia, relic stats, food and level-sync settings are not applied to your actual items. Check the game set before using it.
+On the set page or in My sets, use **To game**. The website queues the plan for its character and shows when the plugin receives it. In `/xgp`, open **Gear plans** and use **Fetch sets**, or wait for the next automatic check (every 5 minutes, even when your gear has not changed). Select the received plan, review it, then use **Create NEW game set**. Switch to the build's job first. This creates a new slot without replacing existing sets or equipping it. Missing items are not obtained. Materia, relic stats, food and level-sync settings are not applied to your actual items. Check the game set before using it.
 
 ## Gear plans and missing items
-Pasted plans are saved locally per character and remain available after creating a game set. Each item shows its icon, item level, quality and whether it is equipped/in your inventory or Armoury Chest, in a cached retainer inventory, or not found. Quantities are allocated per slot so one ring cannot satisfy two requirements. Owned status checks the item and quality; target materia and relic stats are shown separately, not assumed to match. Use Only missing / on retainers to focus the list.
+Received plans are saved locally per character and remain available after creating a game set. Each item shows its icon, item level, quality and whether it is equipped/in your inventory or Armoury Chest, in a cached retainer inventory, or not found. Quantities are allocated per slot so one ring cannot satisfy two requirements. Owned status checks the item and quality; target materia and relic stats are shown separately, not assumed to match. Use Only missing / on retainers to focus the list.
 
 Retainer locations and timestamps are snapshots, refreshed only after opening those inventories. Unchecked retainers may contain more items. Local inventory checks run every 30 seconds while Gear plans is open, or using Refresh inventory. This does not change the five-minute website upload interval.
 
 Where to get it opens the exact item in Garland Tools. Exchange costs loads public prices from the website server on demand (including base-item exchanges). No token is sent with these public requests. Simulations continue to run in the website browser engine; Open website / simulate opens the website, it does not run a simulation inside Dalamud.
+
+## Preview and compare
+Select a plan from the left-hand list to see weapon/armour and accessory slots in two columns. Hover an icon for item details. In **Compare with equipped / saved game set**, choose equipped gear or a numbered game set. Both columns show items, HQ/NQ quality, materia and relic stats. **Refresh comparison** rereads the selected gear. Comparing never equips or overwrites a game set. DPS and level-sync calculations remain on the website.

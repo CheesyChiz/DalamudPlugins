@@ -8,7 +8,7 @@ public sealed partial class Plugin {
  string importMessage="";
  static readonly string[] ImportSlots=["Weapon","OffHand","Head","Body","Hand","", "Legs","Feet","Ears","Neck","Wrist","RingRight","RingLeft"];
  void ValidateImport(JObject doc){
-  if(doc.Value<string>("format")!="xivgear-prog-game-set"||doc.Value<int>("version")!=1||!Jobs.Contains(doc.Value<string>("job")??""))throw new Exception("Copy a set using To game on the website.");
+  if(doc.Value<string>("format")!="xivgear-prog-game-set"||doc.Value<int>("version")!=1||!Jobs.Contains(doc.Value<string>("job")??""))throw new Exception("Send a valid set using To game on the website.");
   if(doc["set"] is not JObject set||set["items"] is not JObject items||items.Count==0||items.Count>12||string.IsNullOrWhiteSpace(set.Value<string>("name")))throw new Exception("Set is empty or invalid.");
   if(items["Weapon"] is null)throw new Exception("Choose a weapon before importing.");
   string[] fields=["MainHand","OffHand","Head","Body","Gloves","", "Legs","Feet","Ears","Neck","Wrists","FingerR","FingerL"];

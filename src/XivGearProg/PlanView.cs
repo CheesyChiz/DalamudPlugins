@@ -56,11 +56,11 @@ public sealed partial class Plugin {
  }
  void DrawImport(){
   if(!Player.IsLoaded){ImGui.TextWrapped("Log in to a character. Plans are saved separately for each character.");return;}
-  if(planCharacter!=Player.ContentId){planCharacter=Player.ContentId;importPreview=null;importMessage="";nextPlanCheck=DateTime.MinValue;}
+  if(planCharacter!=Player.ContentId){planCharacter=Player.ContentId;comparisonItems=null;comparisonError="";comparisonSet=-1;importPreview=null;importMessage="";nextPlanCheck=DateTime.MinValue;}
   if(DateTime.UtcNow>=nextPlanCheck)RefreshPlanInventory();
   ImGui.Spacing();
-  if(ImGui.Button("Paste plan from website")){try{var text=ImGui.GetClipboardText();if(text.Length>100000)throw new Exception("Set data is too large.");var doc=JObject.Parse(text);ValidateImport(doc);importPreview=doc;SavePlan();importMessage="Plan saved for this character.";}catch(Exception e){importPreview=null;importMessage=e.Message;}}
-  if(ImGui.IsItemHovered())ImGui.SetTooltip("Website > My sets > To game. Then click here to read the copied build.");
+  ImGui.BeginDisabled(receivingPlans||config.Token.Length==0);if(ImGui.Button("Fetch sets"))FetchPlans();ImGui.EndDisabled();
+  if(ImGui.IsItemHovered())ImGui.SetTooltip("Receive sets sent with To game on the website. Automatic sync also checks every 5 minutes.");
   ImGui.SameLine();if(ImGui.Button("Refresh inventory"))RefreshPlanInventory();ImGui.SameLine();if(ImGui.Button("Open website"))Process.Start(new ProcessStartInfo("https://xivgearprog.top/"){UseShellExecute=true});
   ImGui.SetNextItemWidth(-1);ImGui.InputTextWithHint("##plan-search","Search saved sets, jobs or notes",ref planSearch,200);
   var width=ImGui.GetContentRegionAvail().X;float left=Math.Clamp(width*.32f,190,310);
@@ -76,11 +76,13 @@ public sealed partial class Plugin {
     if(notes.Length>0)ImGui.TextWrapped(notes);ImGui.Spacing();ImGui.PopID();
    }catch{}
   }
-  if(visible==0)ImGui.TextWrapped(Plans().Count==0?"No saved sets yet. Copy one from the website using To game, then paste it above.":"No sets match your search.");
+  if(visible==0)ImGui.TextWrapped(Plans().Count==0?"No sets received yet. On the website, open a set and click To game. Then use Fetch sets here or wait for automatic sync.":"No sets match your search.");
   ImGui.EndChild();ImGui.SameLine();ImGui.BeginChild("plan-detail",new Vector2(0,0),true);
   if(importPreview is not null){
    ImGui.Separator();ImGui.TextColored(Accent,importPreview["set"]!.Value<string>("name")??"Build");
    if(importPreview["set"]!.Value<string>("notes") is string notes)ImGui.TextWrapped(notes);
+   DrawPlanComparison();
+   ImGui.Separator();ImGui.TextColored(Accent,"SHOPPING CHECKLIST");
    ImGui.Checkbox("Only missing / on retainers",ref onlyMissing);
    var available=new Dictionary<string,int>(localGear);var retainers=JObject.Parse(config.Retainers.GetValueOrDefault(Player.ContentId.ToString())??"{}");var retCounts=new Dictionary<string,int>();var retNames=new Dictionary<string,string>();
    foreach(var r in retainers.Properties())if(r.Value["owned"] is JObject owned)foreach(var item in owned.Properties()){retCounts[item.Name]=retCounts.GetValueOrDefault(item.Name)+item.Value.Value<int>();retNames[item.Name]=retNames.GetValueOrDefault(item.Name,"")+r.Value.Value<string>("name")+" ";}
@@ -104,7 +106,7 @@ public sealed partial class Plugin {
    ImGui.SameLine();if(ImGui.Button("Remove saved plan")){Plans().RemoveAll(s=>{var p=JObject.Parse(s);return p.Value<string>("job")==importPreview.Value<string>("job")&&p["set"]!.Value<string>("name")==importPreview["set"]!.Value<string>("name");});PI.SavePluginConfig(config);importPreview=null;}
    ImGui.TextWrapped("Creates a separate game-set slot, without equipping it. Missing gear is not obtained. Change materia and relic stats yourself in game.");
   }
-  else {ImGui.Spacing();ImGui.TextColored(Accent,"YOUR GEAR PLAN");ImGui.TextWrapped("Choose a saved set on the left to see owned gear, missing items and exchange costs.");ImGui.Separator();ImGui.TextWrapped("1. Website: My sets > To game\n2. Here: Paste plan from website\n3. Review the items and create a game set when ready");ImGui.TextColored(Muted,"DPS simulations are available on the website.");}
+  else {ImGui.Spacing();ImGui.TextColored(Accent,"YOUR GEAR PLAN");ImGui.TextWrapped("Choose a saved set on the left to see owned gear, missing items and exchange costs.");ImGui.Separator();ImGui.TextWrapped("1. Website: open a set > To game\n2. Here: Fetch sets (or automatic sync)\n3. Review and compare before creating a game set");ImGui.TextColored(Muted,"DPS simulations are available on the website.");}
   ImGui.EndChild();
  }
  async Task LoadPlanPrices(uint id){
