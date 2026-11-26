@@ -60,7 +60,7 @@ public sealed partial class Plugin {
   if(DateTime.UtcNow>=nextPlanCheck)RefreshPlanInventory();
   ImGui.Spacing();
   ImGui.BeginDisabled(receivingPlans||config.Token.Length==0);if(ImGui.Button("Fetch sets"))FetchPlans();ImGui.EndDisabled();
-  if(ImGui.IsItemHovered())ImGui.SetTooltip("Receive sets sent with To game on the website. Automatic sync also checks every 5 minutes.");
+  if(ImGui.IsItemHovered())ImGui.SetTooltip("Sets sent with To game arrive automatically while connected. Click to check again manually.");
   ImGui.SameLine();if(ImGui.Button("Refresh inventory"))RefreshPlanInventory();ImGui.SameLine();if(ImGui.Button("Open website"))Process.Start(new ProcessStartInfo("https://xivgearprog.top/"){UseShellExecute=true});
   ImGui.SetNextItemWidth(-1);ImGui.InputTextWithHint("##plan-search","Search saved sets, jobs or notes",ref planSearch,200);
   var width=ImGui.GetContentRegionAvail().X;float left=Math.Clamp(width*.32f,190,310);
@@ -76,7 +76,7 @@ public sealed partial class Plugin {
     if(notes.Length>0)ImGui.TextWrapped(notes);ImGui.Spacing();ImGui.PopID();
    }catch{}
   }
-  if(visible==0)ImGui.TextWrapped(Plans().Count==0?"No sets received yet. On the website, open a set and click To game. Then use Fetch sets here or wait for automatic sync.":"No sets match your search.");
+  if(visible==0)ImGui.TextWrapped(Plans().Count==0?"No sets received yet. On the website, open a set and click To game. It will appear here automatically while connected.":"No sets match your search.");
   ImGui.EndChild();ImGui.SameLine();ImGui.BeginChild("plan-detail",new Vector2(0,0),true);
   if(importPreview is not null){
    ImGui.Separator();ImGui.TextColored(Accent,importPreview["set"]!.Value<string>("name")??"Build");

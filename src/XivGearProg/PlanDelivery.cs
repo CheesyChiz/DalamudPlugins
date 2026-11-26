@@ -5,9 +5,33 @@ using System.Net.Http.Headers;
 using System.Text;
 namespace XivGearProg;
 public sealed partial class Plugin {
- bool receivingPlans;
+ bool receivingPlans,plansPending;
+ CancellationTokenSource? planEvents;
+ string eventIdentity="";
+ void UpdatePlanConnection(){
+  var identity=Player.IsLoaded&&config.Token.Length>0?Player.ContentId+":"+config.Token:"";
+  if(identity==eventIdentity)return;eventIdentity=identity;planEvents?.Cancel();planEvents?.Dispose();planEvents=null;
+  if(identity.Length==0)return;
+  planEvents=CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);_ = ListenForPlans(Player.ContentId.ToString(),config.Token,planEvents.Token);
+ }
+ async Task ListenForPlans(string owner,string token,CancellationToken cancel){
+  while(!cancel.IsCancellationRequested){
+   try{
+    using var request=new HttpRequestMessage(HttpMethod.Get,"https://xivgearprog.top/api/plugin/events?characterId="+Uri.EscapeDataString(owner));
+    request.Headers.Authorization=new AuthenticationHeaderValue("Bearer",token);
+    using var response=await http.SendAsync(request,HttpCompletionOption.ResponseHeadersRead,cancel);response.EnsureSuccessStatusCode();
+    using var stream=await response.Content.ReadAsStreamAsync(cancel);using var reader=new System.IO.StreamReader(stream);
+    while(await reader.ReadLineAsync(cancel) is string line){
+     if(!line.StartsWith("data:"))continue;
+     await Framework.RunOnFrameworkThread(()=>{if(!disposed&&!cancel.IsCancellationRequested&&config.Token==token&&Player.ContentId.ToString()==owner)FetchPlans();});
+    }
+   }catch(OperationCanceledException) when(cancel.IsCancellationRequested){return;}catch{}
+   try{await Task.Delay(TimeSpan.FromSeconds(10),cancel);}catch(OperationCanceledException){return;}
+  }
+ }
  void FetchPlans(){
-  if(receivingPlans||!Player.IsLoaded||config.Token.Length==0)return;
+  if(!Player.IsLoaded||config.Token.Length==0)return;
+  if(receivingPlans){plansPending=true;return;}
   receivingPlans=true;_ = ReceivePlans(Player.ContentId.ToString(),config.Token);
  }
  async Task ReceivePlans(string owner,string token){
@@ -35,6 +59,6 @@ public sealed partial class Plugin {
    }
    await Framework.RunOnFrameworkThread(()=>{if(!disposed)importMessage=count>0?$"Received {count} set(s) from the website. Choose one from the list.":"Checked website — no new sets.";});
   }catch(Exception e){if(!disposed)await Framework.RunOnFrameworkThread(()=>importMessage=e.Message.StartsWith("Saved set limit")?e.Message:"Could not receive sets. Check Connection and try Fetch sets again.");}
-  finally{receivingPlans=false;}
+  finally{receivingPlans=false;if(!disposed&&plansPending)await Framework.RunOnFrameworkThread(()=>{plansPending=false;FetchPlans();});}
  }
 }

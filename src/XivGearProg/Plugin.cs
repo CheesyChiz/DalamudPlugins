@@ -37,7 +37,7 @@ public sealed partial class Plugin : IDalamudPlugin {
    if(cid!=0){config.Characters[cid.ToString()]=Player.CharacterName+" @ "+Player.HomeWorld.Value.Name.ToString();PI.SavePluginConfig(config);status=config.CharacterSyncStatus.GetValueOrDefault(cid.ToString(),"Not synced yet. Automatic sync in 5 minutes, or use Sync now.");}
    else status="Log in to a character to sync. Saved character data is kept.";
   }
-  UpdateResources();if(shopsReady&&config.AutoSync&&config.Token.Length>0&&!busy&&DateTime.UtcNow>=next){next=DateTime.UtcNow.AddMinutes(5);Start(false);}}
+  UpdatePlanConnection();UpdateResources();if(shopsReady&&config.AutoSync&&config.Token.Length>0&&!busy&&DateTime.UtcNow>=next){next=DateTime.UtcNow.AddMinutes(5);Start(false);}}
  void DrawConnection(){
   ImGui.TextWrapped("Sends your equipped gear and saved combat gear sets, materia and relic stats to xivgearprog.top. Includes gear in your bags and Armoury Chest. Currencies and exchange materials are included. Retainer inventory is cached only after you open it in game.");
   ImGui.TextWrapped("On the website: account > Connect game > Create token. Paste that token here.");
@@ -74,5 +74,5 @@ public sealed partial class Plugin : IDalamudPlugin {
   if(equippedSet!=null&&sets.OfType<JObject>().Any(x=>x!=equippedSet&&x.Value<string>("job")==equippedSet.Value<string>("job")&&JToken.DeepEquals(x["items"],equippedSet["items"])))equippedSet.Remove();
   return new JObject{["version"]=1,["characterId"]=Player.ContentId.ToString(),["characterName"]=Player.CharacterName.ToString(),["homeWorld"]=Player.HomeWorld.Value.Name.ToString(),["jobLevels"]=levels,["sets"]=sets,["owned"]=owned,["resources"]=CaptureResources(),["retainers"]=JObject.Parse(config.Retainers.GetValueOrDefault(Player.ContentId.ToString())??"{}")}.ToString(Formatting.None);
  }
- public void Dispose(){disposed=true;DisposeResources();Framework.Update-=Update;PI.UiBuilder.Draw-=Draw;PI.UiBuilder.OpenConfigUi-=Show;Commands.RemoveHandler("/xgp");lifetime.Cancel();http.Dispose();lifetime.Dispose();}
+ public void Dispose(){disposed=true;planEvents?.Cancel();planEvents?.Dispose();DisposeResources();Framework.Update-=Update;PI.UiBuilder.Draw-=Draw;PI.UiBuilder.OpenConfigUi-=Show;Commands.RemoveHandler("/xgp");lifetime.Cancel();http.Dispose();lifetime.Dispose();}
 }
