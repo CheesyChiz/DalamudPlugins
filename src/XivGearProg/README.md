@@ -13,7 +13,7 @@ Dalamud API 15 plugin for https://xivgearprog.top. Command: `/xgp`.
 - All saved combat gear sets (not just one per job).
 - Gear counts from local inventory and Armoury Chest, with HQ/NQ distinction.
 
-The plugin checks for changes every two seconds and waits for two matching snapshots before sending. Unchanged snapshots are not resent. It retries failed uploads with a 30-second backoff. You can pause automatic sync, disconnect locally, or revoke the token on the website. Retainers, chat, logs, achievements and other players are not sent.
+The plugin checks for changes every 5 minutes. Unchanged snapshots are not resent. Failed uploads retry on the same 5-minute interval. **Sync now** sends an immediate update. You can pause automatic sync, disconnect locally, or revoke the token on the website. Retainers, chat, logs, achievements and other players are not sent.
 
 Game sets have stable source identifiers and are marked Game on the website. Existing targets, manually created sets and settings are preserved. Existing imported names are retained when a game set updates. Deleted game sets are retained on the website rather than destructively removed.
 
