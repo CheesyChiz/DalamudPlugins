@@ -13,7 +13,6 @@ Sync your FFXIV gear with [XIVGear Prog](https://xivgearprog.top). Open the plug
 - Selected saved combat gear sets (not just one per job). Use **Choose gear sets to sync** to exclude entire jobs or individual sets. Existing website sets are kept until you delete them.
 - Gear counts from local inventory and Armoury Chest, with HQ/NQ distinction.
 - Character name and home world, tomestone balances and weekly progress, plus materials for gear exchanges.
-- Exchange costs for supported SpecialShop equipment at iLvl 500 and above, read from game data. Unresolved currencies, collectable exchanges, market prices and vendor unlocks are not guessed. Prices are uploaded once per plugin session; subsequent uploads contain balances only.
 - Cached retainer inventory gear and exchange materials, with last-checked timestamps.
 
 The plugin checks for changes every 5 minutes. Unchanged snapshots are not resent. Failed uploads retry on the same 5-minute interval. **Sync now** sends an immediate update. You can pause automatic sync, disconnect locally, or revoke the token on the website. Retainer inventory snapshots update only after opening the inventory in game. Snapshots are cached locally and uploaded on the regular interval or with Sync now; the website shows when each was checked. Retainer market listings and equipped retainer gear are not included. Chat, logs, achievements and other players are not sent.
@@ -21,6 +20,10 @@ The plugin checks for changes every 5 minutes. Unchanged snapshots are not resen
 Game sets have stable character + game slot identifiers, shared with Allagan Tools imports to avoid duplicates. Existing targets, manually created sets and settings are preserved. Existing imported names are retained when a game set updates. Deleted game sets are retained on the website rather than destructively removed.
 
 Tokens grant only gear-upload access, are stored in the local Dalamud plugin configuration, and are never logged. The server stores token hashes. Creating a replacement token revokes the old one.
+
+Prices and exchange requirements come from Garland Tools and are cached on the website server. Viewing prices does not require the game or plugin. The plugin supplies your inventory and currency balances.
+
+To add another character, log in to that character and sync using the same token. Choose the character by name and home world in the website sidebar.
 
 ## License
 [AGPL-3.0-only](LICENSE.md).
