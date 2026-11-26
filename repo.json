@@ -75,8 +75,8 @@
     "Author": "CheesyChiz",
     "Name": "XIVGear Prog",
     "InternalName": "XivGearProg",
-    "AssemblyVersion": "0.1.0.9",
-    "Description": "Connect your account using a revocable token. Sends your equipped gear and saved combat gear sets, including materia and relic stats, to xivgearprog.top. Includes gear in bags and Armoury Chest. Includes currency and material balances. Prices are provided by the website server from Garland Tools. Use one token for multiple characters; select a character on the website. Retainer inventory snapshots update only after opening their inventories in game. Choose which jobs and individual gear sets to sync in /xgp. Open /xgp to connect; automatic checks run every 5 minutes and only changed data is sent. Use Sync now for an immediate update.",
+    "AssemblyVersion": "0.1.0.10",
+    "Description": "Connect your account using a revocable token. Sends your equipped gear and saved combat gear sets, including materia and relic stats, to xivgearprog.top. Syncs all unlocked combat job levels so the website recommends equippable gear and calculates at the correct level. Includes gear in bags and Armoury Chest. Includes currency and material balances. Prices are provided by the website server from Garland Tools. Use one token for multiple characters; select a character on the website. Retainer inventory snapshots update only after opening their inventories in game. Choose which jobs and individual gear sets to sync in /xgp. Open /xgp to connect; automatic checks run every 5 minutes and only changed data is sent. Use Sync now for an immediate update.",
     "ApplicableVersion": "any",
     "RepoUrl": "https://github.com/CheesyChiz/DalamudPlugins/tree/main/src/XivGearProg",
     "Tags": [
@@ -92,11 +92,11 @@
     "LoadPriority": 0,
     "Punchline": "Sync equipped gear and saved gear sets with XIVGear Prog.",
     "AcceptsFeedback": true,
-    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.9.zip",
-    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.9.zip",
-    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.9.zip",
-    "LastUpdate": 1795669718,
-    "Changelog": "Multiple characters with one account token: separate character sync status and job filters. Shows character name and home world. Prices are provided by the website server from Garland Tools; the plugin sends balances.",
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.10.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.10.zip",
+    "DownloadLinkTesting": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/packages/XivGearProg/0.1.0.10.zip",
+    "LastUpdate": 1795698259,
+    "Changelog": "Syncs all combat job levels per character, including level gains. The website uses those levels for gear eligibility and level-specific DPS calculations. Automatic checks remain every 5 minutes; Sync now uploads immediately.",
     "IconUrl": "https://raw.githubusercontent.com/CheesyChiz/DalamudPlugins/main/src/XivGearProg/assets/icon.png"
   }
 ]

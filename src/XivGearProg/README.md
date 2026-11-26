@@ -29,3 +29,5 @@ To add another character, log in to that character and sync using the same token
 [AGPL-3.0-only](LICENSE.md).
 
 `XivGearSet.cs` is from [XivGearExport](https://github.com/VioletStardustXIV/XivGearExport), licensed under AGPL-3.0.
+
+Job levels are synced for every unlocked combat job, including jobs excluded from gear-set uploads. The website uses the selected character’s job level for gear eligibility and calculation. Level gains are included in the next automatic check (every 5 minutes), or immediately with **Sync now**.
