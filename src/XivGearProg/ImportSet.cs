@@ -7,16 +7,6 @@ public sealed partial class Plugin {
  JObject? importPreview;
  string importMessage="";
  static readonly string[] ImportSlots=["Weapon","OffHand","Head","Body","Hand","", "Legs","Feet","Ears","Neck","Wrist","RingRight","RingLeft"];
- void DrawImport(){
-  if(!ImGui.CollapsingHeader("Import set from website"))return;
-  ImGui.TextWrapped("Website: My sets > To game. Copy a set, then preview it here. Creates a NEW game set; existing sets and equipped gear stay unchanged. Materia and relic stats must be adjusted in game. Food and level sync are not game-set settings.");
-  if(ImGui.Button("Preview clipboard")){try{var text=ImGui.GetClipboardText();if(text.Length>100000)throw new Exception("Set data is too large.");var doc=JObject.Parse(text);ValidateImport(doc);importPreview=doc;importMessage="";}catch(Exception e){importPreview=null;importMessage=e.Message;}}
-  if(importPreview is not null){ImGui.TextWrapped(importPreview["set"]!.Value<string>("name")+" - "+importPreview.Value<string>("job"));foreach(var v in ((JObject)importPreview["set"]!["items"]!).Properties()){var row=Data.GetExcelSheet<Lumina.Excel.Sheets.Item>().GetRow(v.Value.Value<uint>("id"));ImGui.TextWrapped(v.Name+": "+row.Name.ToString());}
-   ImGui.TextWrapped("Switch to this job first. The game may mark missing items; import does not obtain or equip them.");
-   if(ImGui.Button("Create new game set")){try{CreateImportedSet(importPreview);importPreview=null;}catch(Exception e){importMessage=e.Message;}}
-  }
-  if(importMessage.Length>0)ImGui.TextWrapped(importMessage);
- }
  void ValidateImport(JObject doc){
   if(doc.Value<string>("format")!="xivgear-prog-game-set"||doc.Value<int>("version")!=1||!Jobs.Contains(doc.Value<string>("job")??""))throw new Exception("Copy a set using To game on the website.");
   if(doc["set"] is not JObject set||set["items"] is not JObject items||items.Count==0||items.Count>12||string.IsNullOrWhiteSpace(set.Value<string>("name")))throw new Exception("Set is empty or invalid.");
