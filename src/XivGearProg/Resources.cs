@@ -32,12 +32,12 @@ public sealed partial class Plugin {
   // Spread sheet work across frames; no inventory scans or network requests here.
   for(int n=0;n<8;n++){
    if(!shopReader.MoveNext()){shopsReady=true;shopReader.Dispose();shopReader=null;return;}
-   var shop=shopReader.Current;if(shop.UseCurrencyType==16||shop.UseCurrencyType==4)continue;
+   var shop=shopReader.Current;if(shop.UseCurrencyType==16)continue;
    foreach(var offer in shop.Item){
     var rewards=offer.ReceiveItems.Where(r=>r.Item.RowId>0&&r.ReceiveCount>0&&r.Item.Value.EquipSlotCategory.RowId>0&&r.Item.Value.LevelItem.RowId>=500&&r.Item.Value.EquipSlotCategory.Value.SoulCrystal==0).ToArray();if(rewards.Length!=1)continue;
     var costs=new JArray();bool valid=true;
     foreach(var cost in offer.ItemCosts){if(cost.ItemCost.RowId==0||cost.CurrencyCost==0)continue;uint id=cost.ItemCost.RowId;
-     if(shop.UseCurrencyType==2&&id<10)id=tomeItems.GetValueOrDefault(id);
+     if((shop.UseCurrencyType==2||shop.UseCurrencyType==4)&&id<10)id=tomeItems.GetValueOrDefault(id);
      if((id<100&&!tomeItems.ContainsValue(id))||cost.CollectabilityCost>0||!items.TryGetRow(id,out var item)){valid=false;break;}
      costs.Add(new JObject{["id"]=id,["name"]=item.Name.ToString(),["iconId"]=item.Icon,["count"]=cost.CurrencyCost,["hq"]=cost.CostType==1});
     }
